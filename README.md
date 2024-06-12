@@ -1,5 +1,3 @@
-[![Open in Codespaces](https://classroom.github.com/assets/launch-codespace-7f7980b617ed060a017424585567c406b6ee15c891e84e1186181d67ecf80aa0.svg)](https://classroom.github.com/open-in-codespaces?assignment_repo_id=15264538)
-
 # 16-node-chatting
 
 B보강 Node 실습 - Unit 7 lessons 30, 31, 32, 33
