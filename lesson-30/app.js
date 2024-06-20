@@ -94,29 +94,18 @@ app.use((req, res, next) => {
  * Define Mongoose and MongoDB connection
  * =====================================================================
  */
-
-// 애플리케이션에 Mongoose 설정
-const mongoose = require("mongoose"), // mongoose를 요청
-  dbName = "aaronkr";
-
+const mongoose = require("mongoose"); // mongoose를 요청
 // 데이터베이스 연결 설정
-mongoose.connect(`mongodb://127.0.0.1:27017/${dbName}`, {
-  useNewUrlParser: true,
-});
-
-// 연결되면 메시지를 보냄
+mongoose.connect(
+  "mongodb+srv://Chou:gTw5EShuWvdLnRA8@atlascluster.2xqcaun.mongodb.net/", // 데이터베이스 연결 설정", // Atlas 경로 (lesson-15)
+);
 const db = mongoose.connection;
 db.once("open", () => {
-  console.log(`Connected to ${dbName} MongoDB using Mongoose!`);
+  console.log("Connected to MOGODB!!!");
 });
 
-/**
- * =====================================================================
- * Define app settings and middleware
- * =====================================================================
- */
-
 app.set("port", process.env.PORT || 3000);
+
 
 // ejs 레이아웃 렌더링
 app.set("view engine", "ejs"); // ejs를 사용하기 위한 애플리케이션 세팅
@@ -173,5 +162,5 @@ const server = app.listen(app.get("port"), () => {
   // 3000번 포트로 리스닝 설정
   console.log(`Server running at http://localhost:${app.get("port")}`);
 });
-// Lesson 30 - socket.io를 사용하기 위한 서버 객체 설정
-// Lesson 30 - 채팅 컨트롤러를 요청하고 서버 객체를 전달
+const io = require("socket.io")(server); // Lesson 30 - socket.io를 사용하기 위한 서버 객체 설정
+require("./controllers/chatController")(io); // Lesson 30 - 채팅 컨트롤러를 요청하고 서버 객체를 전달
