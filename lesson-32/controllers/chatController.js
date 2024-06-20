@@ -28,6 +28,10 @@ module.exports = (io) => {
       });
 
     // Lesson 32.1 (p. 464)
+    socket.on("disconnect", () => {
+      console.log("User disconnected!");
+      socket.broadcast.emit("User disconnected!");
+    });
 
     /**
      * Listing 31.2 (p. 451)
